@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Purpure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 8em;
+            font-weight: bold;
+            letter-spacing: 10px;
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #fff,
+                0 0 40px #8a2be2,
+                0 0 70px #8a2be2,
+                0 0 80px #8a2be2,
+                0 0 100px #8a2be2,
+                0 0 150px #8a2be2;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 
+                    0 0 10px #fff,
+                    0 0 20px #fff,
+                    0 0 30px #fff,
+                    0 0 40px #8a2be2,
+                    0 0 70px #8a2be2,
+                    0 0 80px #8a2be2,
+                    0 0 100px #8a2be2,
+                    0 0 150px #8a2be2;
+            }
+            to {
+                text-shadow: 
+                    0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 15px #fff,
+                    0 0 20px #9370db,
+                    0 0 35px #9370db,
+                    0 0 40px #9370db,
+                    0 0 50px #9370db,
+                    0 0 75px #9370db;
+            }
+        }
+
+        .error-title {
+            font-size: 2.5em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .error-message {
+            font-size: 1.2em;
+            color: #cccccc;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .purpure-text {
+            color: #8a2be2;
+            font-weight: bold;
+            text-shadow: 0 0 5px #8a2be2;
+        }
+
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            font-size: 0.6em;
+            color: #8a2be2;
+            margin: 30px auto;
+            line-height: 1.2;
+            text-shadow: 0 0 5px #8a2be2;
+            max-width: 100%;
+            overflow: auto;
+        }
+
+        @media (max-width: 768px) {
+            .ascii-art {
+                font-size: 0.4em;
+            }
+        }
+
+        .home-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #ffffff;
+            color: #000000;
+            border: 2px solid #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-button:hover {
+            background: transparent;
+            color: #ffffff;
+            box-shadow: 
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #8a2be2,
+                0 0 40px #8a2be2;
+        }
+
+        .home-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .home-button:hover:before {
+            left: 100%;
+        }
+
+        .script-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            margin: 40px 0;
+            border-radius: 5px;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .script-box code {
+            color: #8a2be2;
+        }
+
+        .script-box .comment {
+            color: #666;
+        }
+
+        .script-box .keyword {
+            color: #569cd6;
+            font-weight: bold;
+        }
+
+        .script-box .string {
+            color: #ce9178;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .powered-by {
+            font-size: 1em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            color: #8a2be2;
+        }
+
+        .matrix-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        /* Анимация падающих символов */
+        .matrix-char {
+            position: absolute;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Матричный эффект -->
+    <div class="matrix-effect" id="matrix"></div>
+
+    <div class="container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">PAGE <span class="purpure-text">NOT</span> FOUND</h1>
+        
+        <p class="error-message">
+            The script you're looking for has gone <span class="purpure-text">off-script</span>.<br>
+            The page may have been moved, deleted, or never existed in the first place.
+        </p>
+
+        <div class="ascii-art">
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║   ██████╗ ██╗   ██╗██████╗ ██████╗ ██╗   ██╗██████╗ ███████╗                ║
+║   ██╔══██╗██║   ██║██╔══██╗██╔══██╗██║   ██║██╔══██╗██╔════╝                ║
+║   ██████╔╝██║   ██║██████╔╝██████╔╝██║   ██║██████╔╝█████╗                  ║
+║   ██╔═══╝ ██║   ██║██╔══██╗██╔═══╝ ██║   ██║██╔══██╗██╔══╝                  ║
+║   ██║     ╚██████╔╝██║  ██║██║     ╚██████╔╝██║  ██║███████╗                ║
+║   ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝                ║
+║                                                                              ║
+║   ███████╗ ██████╗██████╗ ██╗██████╗ ████████╗    ███╗   ███╗ █████╗ ██╗  ██╗║
+║   ██╔════╝██╔════╝██╔══██╗██║██╔══██╗╚══██╔══╝    ████╗ ████║██╔══██╗██║ ██╔╝║
+║   ███████╗██║     ██████╔╝██║██████╔╝   ██║       ██╔████╔██║███████║█████╔╝ ║
+║   ╚════██║██║     ██╔══██╗██║██╔═══╝    ██║       ██║╚██╔╝██║██╔══██║██╔═██╗ ║
+║   ███████║╚██████╗██║  ██║██║██║        ██║       ██║ ╚═╝ ██║██║  ██║██║  ██╗║
+║   ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝        ╚═╝       ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+        </div>
+
+        <div class="script-box">
+            <code>
+<span class="comment">-- Error 404 Script - Page Not Found</span>
+<span class="keyword">local</span> PageNotFound = {}
+
+<span class="keyword">function</span> PageNotFound.<span class="keyword">Initialize</span>()
+    <span class="keyword">local</span> errorCode = <span class="string">"404"</span>
+    <span class="keyword">local</span> message = <span class="string">"The requested page could not be found"</span>
+    
+    <span class="keyword">local</span> <span class="keyword">function</span> FindLostPage()
+        <span class="keyword">for</span> _, page <span class="keyword">in</span> <span class="keyword">pairs</span>(workspace:GetChildren()) <span class="keyword">do</span>
+            <span class="keyword">if</span> page.Name == <span class="string">"LostPage"</span> <span class="keyword">then</span>
+                <span class="keyword">return</span> page
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+        <span class="keyword">return</span> <span class="keyword">nil</span>
+    <span class="keyword">end</span>
+    
+    <span class="keyword">local</span> lostPage = FindLostPage()
+    
+    <span class="keyword">if</span> <span class="keyword">not</span> lostPage <span class="keyword">then</span>
+        print(<span class="string">"Error: " .. errorCode .. " - " .. message</span>)
+        <span class="keyword">return</span> <span class="keyword">false</span>
+    <span class="keyword">end</span>
+    
+    <span class="keyword">return</span> <span class="keyword">true</span>
+<span class="keyword">end</span>
+
+<span class="keyword">return</span> PageNotFound
+            </code>
+        </div>
+
+        <a href="/" class="home-button">RETURN TO MAIN</a>
+
+        <footer>
+            <p>PURPURE</p>
+            <p class="powered-by">Hatai and Purpure Team</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Error 404 - Page Not Found</p>
+        </footer>
+    </div>
+
+    <script>
+        // Матричный эффект
+        function createMatrixEffect() {
+            const matrix = document.getElementById('matrix');
+            const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+            
+            function createChar() {
+                const char = document.createElement('div');
+                char.className = 'matrix-char';
+                char.textContent = chars[Math.floor(Math.random() * chars.length)];
+                char.style.left = Math.random() * 100 + 'vw';
+                char.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                char.style.animationDelay = Math.random() * 5 + 's';
+                char.style.opacity = Math.random() * 0.5 + 0.1;
+                matrix.appendChild(char);
+                
+                // Удаление символа после анимации
+                setTimeout(() => {
+                    char.remove();
+                }, parseFloat(char.style.animationDuration) * 1000 + 5000);
+            }
+            
+            // Создаем начальные символы
+            for (let i = 0; i < 50; i++) {
+                setTimeout(createChar, i * 100);
+            }
+            
+            // Продолжаем создавать символы
+            setInterval(createChar, 100);
+        }
+
+        // Анимация 404 кода
+        function animate404() {
+            const errorCode = document.querySelector('.error-code');
+            let scale = 1;
+            let direction = 0.001;
+            
+            function pulse() {
+                scale += direction;
+                if (scale >= 1.05 || scale <= 0.95) {
+                    direction = -direction;
+                }
+                errorCode.style.transform = `scale(${scale})`;
+                requestAnimationFrame(pulse);
+            }
+            
+            pulse();
+        }
+
+        // Тайпограф эффект для текста ошибки
+        function typewriterEffect() {
+            const message = document.querySelector('.error-message');
+            const originalText = message.innerHTML;
+            message.innerHTML = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    message.innerHTML += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 30);
+                }
+            }
+            
+            setTimeout(typeWriter, 1000);
+        }
+
+        // Инициализация при загрузке
+        window.addEventListener('DOMContentLoaded', () => {
+            createMatrixEffect();
+            animate404();
+            typewriterEffect();
+            
+            // Добавляем звук клика на кнопку (опционально)
+            const button = document.querySelector('.home-button');
+            button.addEventListener('click', (e) => {
+                // Можно добавить звук здесь
+                console.log('Returning to home page...');
+            });
+            
+            // Эффект параллакса для фона
+            document.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth) * 20;
+                const y = (e.clientY / window.innerHeight) * 20;
+                document.body.style.backgroundPosition = `${x}% ${y}%`;
+            });
+        });
+
+        // Случайное мерцание звезд
+        setInterval(() => {
+            const stars = document.querySelectorAll('.matrix-char');
+            if (stars.length > 0) {
+                const randomStar = stars[Math.floor(Math.random() * stars.length)];
+                randomStar.style.opacity = Math.random() * 0.8 + 0.2;
+                setTimeout(() => {
+                    randomStar.style.opacity = Math.random() * 0.5 + 0.1;
+                }, 200);
+            }
+        }, 100);
+    </script>
+</body>
+</html>
