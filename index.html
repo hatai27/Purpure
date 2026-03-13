@@ -492,7 +492,7 @@
             <form id="edit-form">
                 <div class="form-group">
                     <label>Script link:</label>
-                    <input type="text" id="edit-url" placeholder="https://s.pufus.win/proxy/vDq7TpJfh6mr/YOUR_ID" required>
+                    <input type="text" id="edit-url" placeholder="https://protected-roblox-scripts.onrender.com/YOUR_ID" required>
                     <small style="color: #888; font-size: 0.85em; margin-top: 5px; display: block;">Paste the full link from creation result</small>
                 </div>
 
@@ -532,7 +532,7 @@
             <form id="get-form">
                 <div class="form-group">
                     <label>Script link:</label>
-                    <input type="text" id="get-url" placeholder="https://s.pufus.win/proxy/vDq7TpJfh6mr/YOUR_ID" required>
+                    <input type="text" id="get-url" placeholder="https://protected-roblox-scripts.onrender.com/YOUR_ID" required>
                     <small style="color: #888; font-size: 0.85em; margin-top: 5px; display: block;">Paste the full link from creation result</small>
                 </div>
 
@@ -563,8 +563,6 @@
     </div>
 
     <script>
-        const API_BASE = 'https://s.pufus.win/proxy/vDq7TpJfh6mr';
-
         // Generate random unique ID
         function generateRandomID() {
             const timestamp = Date.now().toString(36);
@@ -574,6 +572,7 @@
         }
 
         function switchTab(tabName) {
+            // Hide all tabs
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
@@ -581,9 +580,11 @@
                 tab.classList.remove('active');
             });
 
+            // Show selected tab
             document.getElementById(`${tabName}-tab`).classList.add('active');
             event.target.classList.add('active');
 
+            // Hide all messages
             document.querySelectorAll('.error, .success, .result-box').forEach(el => {
                 el.classList.remove('show');
             });
@@ -593,7 +594,7 @@
         document.getElementById('create-form').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const scriptId = generateRandomID();
+            const scriptId = generateRandomID(); // Auto-generate unique ID
             const script = document.getElementById('create-script').value;
             const key = document.getElementById('create-key').value;
 
@@ -602,13 +603,14 @@
             const success = document.getElementById('create-success');
             const result = document.getElementById('create-result');
 
+            // Reset
             error.classList.remove('show');
             success.classList.remove('show');
             result.classList.remove('show');
             loading.classList.add('show');
 
             try {
-                const response = await fetch(`${API_BASE}/`, {
+                const response = await fetch('https://protected-roblox-scripts.onrender.com/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -643,7 +645,7 @@
 Purpure Obfuscator By Hatai v1.0
 Script ID: ${scriptId}
 ]]--
-loadstring(game:HttpGet("${API_BASE}/${scriptId}"))()`;
+loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/${scriptId}"))()`;
 
                 success.innerHTML = `Script successfully obfuscated!<br><strong>Script ID: ${scriptId}</strong><br>Save the ID for editing!`;
                 success.classList.add('show');
@@ -663,6 +665,7 @@ loadstring(game:HttpGet("${API_BASE}/${scriptId}"))()`;
             e.preventDefault();
 
             const url = document.getElementById('edit-url').value.trim();
+            // Extract script ID from URL
             const scriptId = url.split('/').pop() || url;
             const script = document.getElementById('edit-script').value;
             const key = document.getElementById('edit-key').value;
@@ -672,13 +675,14 @@ loadstring(game:HttpGet("${API_BASE}/${scriptId}"))()`;
             const success = document.getElementById('edit-success');
             const result = document.getElementById('edit-result');
 
+            // Reset
             error.classList.remove('show');
             success.classList.remove('show');
             result.classList.remove('show');
             loading.classList.add('show');
 
             try {
-                const response = await fetch(`${API_BASE}/${scriptId}`, {
+                const response = await fetch(`https://protected-roblox-scripts.onrender.com/${scriptId}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -710,7 +714,7 @@ loadstring(game:HttpGet("${API_BASE}/${scriptId}"))()`;
 Purpure Obfuscator By Hatai v1.0
 Script ID: ${scriptId}
 ]]--
-loadstring(game:HttpGet("${API_BASE}/${scriptId}"))()`;
+loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/${scriptId}"))()`;
 
                 success.innerHTML = `Script successfully updated!<br><strong>Script ID: ${scriptId}</strong>`;
                 success.classList.add('show');
@@ -730,18 +734,20 @@ loadstring(game:HttpGet("${API_BASE}/${scriptId}"))()`;
             e.preventDefault();
 
             const url = document.getElementById('get-url').value.trim();
+            // Extract script ID from URL
             const scriptId = url.split('/').pop() || url;
 
             const loading = document.getElementById('get-loading');
             const error = document.getElementById('get-error');
             const result = document.getElementById('get-result');
 
+            // Reset
             error.classList.remove('show');
             result.classList.remove('show');
             loading.classList.add('show');
 
             try {
-                const response = await fetch(`${API_BASE}/${scriptId}`, {
+                const response = await fetch(`https://protected-roblox-scripts.onrender.com/${scriptId}`, {
                     method: 'GET'
                 });
 
@@ -766,7 +772,7 @@ loadstring(game:HttpGet("${API_BASE}/${scriptId}"))()`;
 Purpure Obfuscator By Hatai v1.0
 Script ID: ${scriptId}
 ]]--
-loadstring(game:HttpGet("${API_BASE}/${scriptId}"))()`;
+loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/${scriptId}"))()`;
 
                 document.getElementById('get-result-content').textContent = outputTemplate;
                 result.classList.add('show');
@@ -791,4 +797,4 @@ loadstring(game:HttpGet("${API_BASE}/${scriptId}"))()`;
         }
     </script>
 </body>
-</html>
+                    </html>
